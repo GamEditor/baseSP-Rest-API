@@ -1,5 +1,16 @@
 /* list operations with rest api */
 
+function getSiteListNames(onSuccess, onError, async) {
+    $.ajax({
+        url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists",
+        async: async ? async : true,
+        method: 'GET',
+        headers: { 'Accept': 'application/json;odata=verbose' },
+        success: function (data) { onSuccess(data.d.results); },
+        error: function (data) { onError(data); }
+    });
+}
+
 function getListItemById(listTitle, itemId, select, onSuccess, onError, async) {
     $.ajax({
         url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('" + listTitle + "')/items(" + itemId + ")" + (select.trim() != '' ? ('?$select=' + select) : ''),

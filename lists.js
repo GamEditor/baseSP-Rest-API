@@ -74,7 +74,7 @@ function createListItem(listTitle, newdata, onSuccess, onError, async) {
 function updateListItemById(listTitle, itemId, newdata, onSuccess, onError, async) {
     // var newdata = {
     //     __metadata: {
-    //         'type': 'SP.Data.[ListName]ListItem', // [ListName] is for list name (first char must be capital)
+    //         'type': 'SP.Data.[ListName]Item', // [ListName] is for list name (first char must be capital)
     //     },
     //     Title: "new title",
     //     x: 'x',

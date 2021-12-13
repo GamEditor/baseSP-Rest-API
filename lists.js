@@ -115,6 +115,24 @@ function deleteListItemById(listTitle, itemId, onSuccess, onError, async) {
     });
 }
 
+function createFolder(libraryEntityName, folderName, onSuccess, onError) {
+    $.ajax({
+        url: `${_spPageContextInfo.webAbsoluteUrl}/_api/web/folders`,
+        type: 'POST',
+        data: JSON.stringify({
+            '__metadata': { 'type': 'SP.Folder' },
+            'ServerRelativeUrl': `${libraryEntityName}/${folderName}`
+        }),
+        headers: {
+            'accept': 'application/json;odata=verbose',
+            'content-type': 'application/json;odata=verbose',
+            'X-RequestDigest': $('#__REQUESTDIGEST').val()
+        },
+        success: onSuccess,
+        error: onError
+    });
+}
+
 // future functions
 function createList() {}
 function deleteList() {}
